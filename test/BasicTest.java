@@ -37,7 +37,7 @@ public class BasicTest extends UnitTest {
     	
     	Post bobPost = new Post(bob,"My first post", "Hello World");
     	bobPost.save();
-    	
+    
     	//To test that the post was created
     	assertEquals(1, Post.count());
     	
@@ -47,7 +47,7 @@ public class BasicTest extends UnitTest {
     	assertEquals(bob, bobPosts.get(0).author);
     	assertEquals("My first post", bobPosts.get(0).title);
     	assertEquals("Hello World", bobPosts.get(0).content);
-    	assertNotNull(bobPosts.get(0).date);
+    	assertNotNull(bobPosts.get(0).postedAt);
     }
     
     @Test
@@ -71,7 +71,7 @@ public class BasicTest extends UnitTest {
     	
     	//To retrieve the comments
     	assertEquals(2, bobPost.comments.size());
-    	assertEquals("Jeff", bobPost.comments.get(0).user);
+    	assertEquals("Jeff", bobPost.comments.get(0).author);
     	
     	//Deleting the post
     	bobPost.delete();

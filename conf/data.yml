@@ -1,0 +1,55 @@
+# you describe your data using the YAML notation here
+# and then load them using Fixtures.load("data.yml")
+
+User(bob):
+ email: bob@gmail.com
+ fullname: Bob
+ password: secret
+ 
+Post(firstBobPost):
+ title: First Post
+ postedAt: 2009-06-14
+ author: bob
+ content: This is the content of my first post.
+
+User(jeff):
+ email: jeff@gmail.com
+ password: secret
+ fullname:  Jeff
+
+
+Post(secondBobPost):
+ title:    Just another test for the blog engine
+ postedAt: 2009-03-11
+ author:   bob
+ content:  >
+           The model has a central position in a Play! application. It is the domain-specific 
+           representation of the information on which the application operates.
+                    
+           Martin fowler defines it as :
+                        
+           Responsible for representing concepts of the business, information about the 
+           business situation, and business rules. State that reflects the business situation 
+           is controlled and used here, even though the technical details of storing it are 
+           delegated to the infrastructure. This layer is the heart of business software.
+
+Comment(c1):
+ author:   Guest
+ content:  >
+           You are right!
+ postedAt: 2009-06-14
+ post:     firstBobPost
+
+Comment(c2):
+ author:   Mike
+ content:  >
+           This post is useless ?
+ postedAt: 2009-04-05
+ post:     secondBobPost    
+
+Comment(c3):
+ author:   Tom
+ content:  >
+           This post is useless ?
+ postedAt: 2009-04-05
+ post:     secondBobPost  

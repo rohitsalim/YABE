@@ -18,12 +18,13 @@ import play.db.jpa.Model;
 public class Post extends Model{
 
 	public String title;
-	public Date date;
+	public Date postedAt;
 	
 	@Lob @Type(type = "org.hibernate.type.TextType")
 	public String content;
 	
 	@OneToMany(mappedBy="post", cascade=CascadeType.ALL)
+	
 	public List<Comment> comments;
 	
 	//Many posts to one User
@@ -36,7 +37,7 @@ public class Post extends Model{
 		this.author = author;
 		this.title = title;
 		this.content = content;
-		this.date = new Date();
+		this.postedAt = new Date();
 	}
 	
 	public Post addComment(String author, String content){

@@ -14,7 +14,7 @@ import play.db.jpa.Model;
 @Entity
 public class Comment extends Model{
 
-	public String user;
+	public String author;
 	public Date postedAt;
 	
 	@Lob @Type(type = "org.hibernate.type.TextType")
@@ -25,7 +25,7 @@ public class Comment extends Model{
 	
 	public Comment(String user, String content, Post post)
 	{
-		this.user = user;
+		this.author = user;
 		postedAt = new Date();
 		this.content = content;
 		this.post = post;
