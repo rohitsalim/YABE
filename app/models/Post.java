@@ -16,7 +16,7 @@ import play.db.jpa.Model;
 
 @Entity
 public class Post extends Model{
-
+	
 	public String title;
 	public Date postedAt;
 	
@@ -31,8 +31,7 @@ public class Post extends Model{
 	@ManyToOne
 	public User author;
 	
-	public Post (User author, String title, String content)
-	{
+	public Post (User author, String title, String content){
 		comments = new ArrayList<Comment>();
 		this.author = author;
 		this.title = title;
@@ -47,4 +46,14 @@ public class Post extends Model{
 		this.save();
 		return this;
 	}
+	
+	public Post previous(){
+		return Post.find("postedAt < ? order by postedAt desc", postedAt).first();
+	}
+	
+	public Post next(){
+		return Post.find("postedAt > ? order by postedAt asc", postedAt).first();
+	}
+	
+	
 }
